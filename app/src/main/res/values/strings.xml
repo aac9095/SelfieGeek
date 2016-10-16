@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Selfie Geek</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="capture_button">Capture Image From Camera</string>
+    <string name="desc">capture image place holder</string>
+</resources>
