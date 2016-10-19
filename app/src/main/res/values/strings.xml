@@ -4,4 +4,6 @@
     <string name="action_settings">Settings</string>
     <string name="capture_button">Capture Image From Camera</string>
     <string name="desc">capture image place holder</string>
+    <string name="app_id">kid_B1XAwNyJl</string>
+    <string name="app_secret">ea6bebae711e4577879b2e66e11c90cd</string>
 </resources>

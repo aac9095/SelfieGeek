@@ -1,8 +1,10 @@
 package android.socialcops.selfiegeek;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,10 +38,28 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         String address = imageList.get(position);
-        File imageFile = new File(address);
+        final File imageFile = new File(address);
+        final boolean isVideo = address.contains("Video");
         if(imageFile.exists()){
+
             Bitmap myBitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
-            holder.cameraImage.setImageBitmap(myBitmap);
+            if(isVideo)
+                holder.cameraImage.setImageResource(R.drawable.ic_video);
+            else
+                holder.cameraImage.setImageBitmap(myBitmap);
+
+            holder.cameraImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    Uri uri = Uri.fromFile(imageFile);
+                    if(isVideo)
+                        intent.setDataAndType(uri,"video/*");
+                    else
+                        intent.setDataAndType(uri,"image/*");
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 

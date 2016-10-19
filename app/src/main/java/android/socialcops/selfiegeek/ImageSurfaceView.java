@@ -15,7 +15,7 @@ import java.io.IOException;
  */
 
 public class ImageSurfaceView extends SurfaceView implements SurfaceHolder.Callback {
-    public static final String TAG = ImageSurfaceView.class.getSimpleName();
+    public static final String TAG = CameraActivity.class.getSimpleName();
 
     private Camera camera;
     private MediaRecorder mediaRecorder;
@@ -44,7 +44,7 @@ public class ImageSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        Log.d(TAG, "surfaceCreated: ");
+        Log.d(TAG, "surfaceCreated ");
             mediaRecorder.setPreviewDisplay(holder.getSurface());
 
             try {
@@ -66,6 +66,6 @@ public class ImageSurfaceView extends SurfaceView implements SurfaceHolder.Callb
             this.mediaRecorder.release();
             this.camera.stopPreview();
             this.camera.release();
-        Log.d(TAG, "surfaceDestroyed: ");
+        Log.d(TAG, "surfaceDestroyed ");
     }
 }
